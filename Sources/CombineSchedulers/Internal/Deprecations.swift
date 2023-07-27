@@ -4,19 +4,20 @@
 
   // NB: Soft-deprecated after 0.5.3:
 
-  @available(iOS, deprecated: 9999.0, renamed: "UnimplementedScheduler")
+  @available(iOS, introduced: 13, deprecated: 9999.0, renamed: "UnimplementedScheduler")
   @available(macOS, deprecated: 9999.0, renamed: "UnimplementedScheduler")
   @available(tvOS, deprecated: 9999.0, renamed: "UnimplementedScheduler")
   @available(watchOS, deprecated: 9999.0, renamed: "UnimplementedScheduler")
   public typealias FailingScheduler = UnimplementedScheduler
 
-  @available(iOS, deprecated: 9999.0, renamed: "UnimplementedSchedulerOf")
+  @available(iOS, introduced: 13, deprecated: 9999.0, renamed: "UnimplementedSchedulerOf")
   @available(macOS, deprecated: 9999.0, renamed: "UnimplementedSchedulerOf")
   @available(tvOS, deprecated: 9999.0, renamed: "UnimplementedSchedulerOf")
   @available(watchOS, deprecated: 9999.0, renamed: "UnimplementedSchedulerOf")
   public typealias FailingSchedulerOf = UnimplementedSchedulerOf
 
-  extension DispatchQueue {
+@available(iOS 13.0, *)
+extension DispatchQueue {
     @available(iOS, deprecated: 9999.0, renamed: "unimplemented")
     @available(macOS, deprecated: 9999.0, renamed: "unimplemented")
     @available(tvOS, deprecated: 9999.0, renamed: "unimplemented")
@@ -32,7 +33,8 @@
     }
   }
 
-  extension OperationQueue {
+@available(iOS 13.0, *)
+extension OperationQueue {
     @available(iOS, deprecated: 9999.0, renamed: "unimplemented")
     @available(macOS, deprecated: 9999.0, renamed: "unimplemented")
     @available(tvOS, deprecated: 9999.0, renamed: "unimplemented")
@@ -48,7 +50,8 @@
     }
   }
 
-  extension RunLoop {
+@available(iOS 13.0, *)
+extension RunLoop {
     @available(iOS, deprecated: 9999.0, renamed: "unimplemented")
     @available(macOS, deprecated: 9999.0, renamed: "unimplemented")
     @available(tvOS, deprecated: 9999.0, renamed: "unimplemented")
@@ -64,6 +67,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,
@@ -82,6 +86,7 @@
     public static func failing(_ prefix: String) -> Self { Self.unimplemented(prefix) }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == OperationQueue.SchedulerTimeType,
@@ -100,6 +105,7 @@
     public static func failing(_ prefix: String) -> Self { Self.unimplemented(prefix) }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == RunLoop.SchedulerTimeType,
@@ -120,6 +126,7 @@
 
   // NB: Deprecated after 0.4.1:
 
+  @available(iOS 13.0, *)
   extension Scheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,
@@ -132,6 +139,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension Scheduler
   where
     SchedulerTimeType == RunLoop.SchedulerTimeType,
@@ -143,6 +151,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension Scheduler
   where
     SchedulerTimeType == OperationQueue.SchedulerTimeType,
@@ -154,6 +163,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension Scheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,
@@ -167,6 +177,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension Scheduler
   where
     SchedulerTimeType == OperationQueue.SchedulerTimeType,
@@ -179,6 +190,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension Scheduler
   where
     SchedulerTimeType == RunLoop.SchedulerTimeType,

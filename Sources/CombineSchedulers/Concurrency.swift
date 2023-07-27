@@ -1,7 +1,8 @@
 #if canImport(Combine)
   import Combine
 
-  extension Scheduler {
+@available(iOS 13.0, *)
+extension Scheduler {
     /// Suspends the current task for at least the given duration.
     ///
     /// If the task is cancelled before the time ends, this function throws `CancellationError`.

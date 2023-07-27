@@ -72,7 +72,8 @@
   /// this test will begin to fail, which is a good thing! This will force us to address the
   /// complexity that was introduced. Had we used any other scheduler, it would quietly receive this
   /// additional work and the test would continue to pass.
-  public struct UnimplementedScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
+@available(iOS 13.0, *)
+public struct UnimplementedScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
   where
     SchedulerTimeType: Strideable,
     SchedulerTimeType.Stride: SchedulerTimeIntervalConvertible
@@ -154,10 +155,12 @@
     }
   }
 
-  extension UnimplementedScheduler: Sendable
+@available(iOS 13.0, *)
+extension UnimplementedScheduler: Sendable
   where SchedulerTimeType: Sendable, SchedulerTimeType.Stride: Sendable {}
 
-  extension DispatchQueue {
+@available(iOS 13.0, *)
+extension DispatchQueue {
     /// An unimplemented scheduler that can substitute itself for a dispatch queue.
     public static var unimplemented: UnimplementedSchedulerOf<DispatchQueue> {
       Self.unimplemented("DispatchQueue")
@@ -174,7 +177,8 @@
     }
   }
 
-  extension OperationQueue {
+@available(iOS 13.0, *)
+extension OperationQueue {
     /// An unimplemented scheduler that can substitute itself for an operation queue.
     public static var unimplemented: UnimplementedSchedulerOf<OperationQueue> {
       Self.unimplemented("OperationQueue")
@@ -190,7 +194,8 @@
     }
   }
 
-  extension RunLoop {
+@available(iOS 13.0, *)
+extension RunLoop {
     /// An unimplemented scheduler that can substitute itself for a run loop.
     public static var unimplemented: UnimplementedSchedulerOf<RunLoop> {
       Self.unimplemented("RunLoop")
@@ -206,7 +211,8 @@
     }
   }
 
-  extension AnyScheduler
+@available(iOS 13.0, *)
+extension AnyScheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,
     SchedulerOptions == DispatchQueue.SchedulerOptions
@@ -226,7 +232,8 @@
     }
   }
 
-  extension AnyScheduler
+@available(iOS 13.0, *)
+extension AnyScheduler
   where
     SchedulerTimeType == OperationQueue.SchedulerTimeType,
     SchedulerOptions == OperationQueue.SchedulerOptions
@@ -246,7 +253,8 @@
     }
   }
 
-  extension AnyScheduler
+@available(iOS 13.0, *)
+extension AnyScheduler
   where
     SchedulerTimeType == RunLoop.SchedulerTimeType,
     SchedulerOptions == RunLoop.SchedulerOptions
@@ -268,6 +276,7 @@
 
   /// A convenience type to specify an `UnimplementedScheduler` by the scheduler it wraps rather than
   /// by the time type and options type.
+  @available(iOS 13.0, *)
   public typealias UnimplementedSchedulerOf<Scheduler> = UnimplementedScheduler<
     Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions
   > where Scheduler: Combine.Scheduler

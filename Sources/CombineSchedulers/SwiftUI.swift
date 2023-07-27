@@ -2,6 +2,7 @@
   import Combine
   import SwiftUI
 
+  @available(iOS 13.0, *)
   extension Scheduler {
     /// Specifies an animation to perform when an action is scheduled. This can be useful for times
     /// that you cannot easily wrap state mutations in a `withAnimation` block.

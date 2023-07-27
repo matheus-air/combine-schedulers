@@ -2,7 +2,8 @@
   import Combine
   import UIKit
 
-  extension Scheduler {
+@available(iOS 13.0, *)
+extension Scheduler {
     /// Wraps scheduled actions in `UIView.animate`.
     ///
     /// - Parameter duration: The `duration` parameter passed to `UIView.animate`.

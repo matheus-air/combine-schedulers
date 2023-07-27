@@ -67,7 +67,8 @@
   /// but this technique can be used to test any publisher that involves Combine's asynchronous
   /// operations.
   ///
-  public final class TestScheduler<SchedulerTimeType, SchedulerOptions>:
+@available(iOS 13.0, *)
+public final class TestScheduler<SchedulerTimeType, SchedulerOptions>:
     Scheduler, @unchecked Sendable
   where SchedulerTimeType: Strideable, SchedulerTimeType.Stride: SchedulerTimeIntervalConvertible {
 
@@ -249,6 +250,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension DispatchQueue {
     /// A test scheduler of dispatch queues.
     public static var test: TestSchedulerOf<DispatchQueue> {
@@ -257,6 +259,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension UIScheduler {
     /// A test scheduler compatible with type erased UI schedulers.
     public static var test: TestSchedulerOf<Self> {
@@ -265,6 +268,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension OperationQueue {
     /// A test scheduler of operation queues.
     public static var test: TestSchedulerOf<OperationQueue> {
@@ -272,6 +276,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension RunLoop {
     /// A test scheduler of run loops.
     public static var test: TestSchedulerOf<RunLoop> {
@@ -281,6 +286,7 @@
 
   /// A convenience type to specify a `TestScheduler` by the scheduler it wraps rather than by the
   /// time type and options type.
+  @available(iOS 13.0, *)
   public typealias TestSchedulerOf<Scheduler> = TestScheduler<
     Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions
   > where Scheduler: Combine.Scheduler

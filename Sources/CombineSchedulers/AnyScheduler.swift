@@ -131,7 +131,8 @@
   /// in classes, functions, etc. without needing to introduce a generic, which can help simplify
   /// the code and reduce implementation details from leaking out.
   ///
-  public struct AnyScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler, @unchecked Sendable
+@available(iOS 13.0, *)
+public struct AnyScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler, @unchecked Sendable
   where
     SchedulerTimeType: Strideable,
     SchedulerTimeType.Stride: SchedulerTimeIntervalConvertible
@@ -240,10 +241,12 @@
 
   /// A convenience type to specify an `AnyScheduler` by the scheduler it wraps rather than by the
   /// time type and options type.
+  @available(iOS 13.0, *)
   public typealias AnySchedulerOf<Scheduler> = AnyScheduler<
     Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions
   > where Scheduler: Combine.Scheduler
 
+  @available(iOS 13.0, *)
   extension Scheduler {
     /// Wraps this scheduler with a type eraser.
     public func eraseToAnyScheduler() -> AnyScheduler<SchedulerTimeType, SchedulerOptions> {
@@ -251,6 +254,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,
@@ -267,6 +271,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == OperationQueue.SchedulerTimeType,
@@ -278,6 +283,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == RunLoop.SchedulerTimeType,
@@ -289,6 +295,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,

@@ -15,7 +15,8 @@
   /// This scheduler can be useful for situations where you need work executed as quickly as
   /// possible on the main thread, and for which a thread hop would be problematic, such as when
   /// performing animations.
-  public struct UIScheduler: Scheduler, Sendable {
+@available(iOS 13.0, *)
+public struct UIScheduler: Scheduler, Sendable {
     public typealias SchedulerOptions = Never
     public typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType
 

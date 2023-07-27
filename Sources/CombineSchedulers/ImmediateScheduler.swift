@@ -98,7 +98,8 @@
   /// > `ImmediateScheduler` will not schedule this work in a defined way. Use a `TestScheduler`
   /// > instead to capture your publisher's timing behavior.
   ///
-  public struct ImmediateScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
+@available(iOS 13.0, *)
+public struct ImmediateScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
   where
     SchedulerTimeType: Strideable,
     SchedulerTimeType.Stride: SchedulerTimeIntervalConvertible
@@ -139,9 +140,11 @@
     }
   }
 
-  extension ImmediateScheduler: Sendable
+@available(iOS 13.0, *)
+extension ImmediateScheduler: Sendable
   where SchedulerTimeType: Sendable, SchedulerTimeType.Stride: Sendable {}
-
+  
+  @available(iOS 13.0, *)
   extension DispatchQueue {
     /// An immediate scheduler that can substitute itself for a dispatch queue.
     public static var immediate: ImmediateSchedulerOf<DispatchQueue> {
@@ -150,6 +153,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension OperationQueue {
     /// An immediate scheduler that can substitute itself for an operation queue.
     public static var immediate: ImmediateSchedulerOf<OperationQueue> {
@@ -157,6 +161,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension RunLoop {
     /// An immediate scheduler that can substitute itself for a run loop.
     public static var immediate: ImmediateSchedulerOf<RunLoop> {
@@ -164,6 +169,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == DispatchQueue.SchedulerTimeType,
@@ -175,6 +181,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == OperationQueue.SchedulerTimeType,
@@ -186,6 +193,7 @@
     }
   }
 
+  @available(iOS 13.0, *)
   extension AnyScheduler
   where
     SchedulerTimeType == RunLoop.SchedulerTimeType,
@@ -199,6 +207,7 @@
 
   /// A convenience type to specify an `ImmediateScheduler` by the scheduler it wraps rather than by
   /// the time type and options type.
+  @available(iOS 13.0, *)
   public typealias ImmediateSchedulerOf<Scheduler> = ImmediateScheduler<
     Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions
   > where Scheduler: Combine.Scheduler
