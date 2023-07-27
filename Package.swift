@@ -17,8 +17,8 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/matheus-air/swift-concurrency-extras", branch: "ios-11-compatibility"),
-    .package(url: "https://github.com/matheus-air/xctest-dynamic-overlay", branch: "ios-11-compatibility"),
+    .package(url: "git@github.com:matheus-air/swift-concurrency-extras", branch: "ios-11-compatibility"),
+    .package(url: "git@github.com:matheus-air/xctest-dynamic-overlay", branch: "ios-11-compatibility"),
   ],
   targets: [
     .target(
